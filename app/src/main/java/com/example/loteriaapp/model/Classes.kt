@@ -15,3 +15,23 @@ data class GetApuestaResponse(
     @SerializedName("user_id")
     var user_id: Int
 )
+
+data class LoginRequest(
+        @SerializedName("email")
+        var email: String,
+
+        @SerializedName("password")
+        var password: String
+)
+
+data class LoginResponse(
+
+        @SerializedName("name")
+        var name: String,
+        @SerializedName("surname")
+        var surname: String,
+        @SerializedName("email")
+        var email: String,
+        @SerializedName("id")
+        var user_id: String
+)
