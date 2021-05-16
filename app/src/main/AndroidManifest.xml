@@ -13,8 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoteriaApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".views.HomeActivity"></activity>
-        <activity android:name=".views.MainActivity">
+        <activity
+            android:name=".views.ApuestasActivity"
+            android:label="@string/title_activity_apuestas"
+            android:theme="@style/Theme.LoteriaApp.NoActionBar" />
+        <activity android:name=".views.HomeActivity"
+            android:theme="@style/Theme.LoteriaApp.NoActionBar"/>
+        <activity
+            android:name=".views.LoginActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

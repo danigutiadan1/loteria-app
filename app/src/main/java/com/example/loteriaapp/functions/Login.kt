@@ -3,7 +3,6 @@ package com.example.loteriaapp.functions
 import android.content.Context
 import android.util.Log
 import com.example.loteriaapp.api.ApiClient
-import com.example.loteriaapp.model.GetApuestaResponse
 import com.example.loteriaapp.model.LoginRequest
 import com.example.loteriaapp.model.LoginResponse
 import com.example.loteriaapp.model.SessionManager
@@ -14,14 +13,14 @@ import retrofit2.Response
 class Login {
     //private lateinit var sessionManager: SessionManager
     private lateinit var apiClient: ApiClient
-    private lateinit var toHomeActivity: ToHomeActivity
+    private lateinit var toHomeActivity: ToActivity
     private lateinit var sessionManager: SessionManager
 
 
     fun login(context: Context, email: String, password: String) {
         sessionManager= SessionManager(context)
         apiClient = ApiClient()
-        toHomeActivity= ToHomeActivity()
+        toHomeActivity= ToActivity()
         apiClient.getApiService(context).login(LoginRequest(email, password))
                 .enqueue(object : Callback<List<LoginResponse>> {
                     override fun onFailure(call: Call<List<LoginResponse>>, t: Throwable) {

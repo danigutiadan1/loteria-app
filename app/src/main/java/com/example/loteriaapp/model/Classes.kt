@@ -11,9 +11,15 @@ data class GetApuestaResponse(
     @SerializedName("sorteo_date")
     var sorteo_date: Date,
     @SerializedName("combinacion")
-    var combinacion: String,
-    @SerializedName("user_id")
-    var user_id: Int
+    var combinacion: String
+)
+
+data class PostApuesta(
+    @SerializedName("sorteo_date")
+    var sorteo_date: String,
+    @SerializedName("combinacion")
+    var combinacion: String
+
 )
 
 data class LoginRequest(
@@ -22,6 +28,16 @@ data class LoginRequest(
 
         @SerializedName("password")
         var password: String
+)
+
+data class ApuestaRequest(
+    @SerializedName("user_id")
+    var user_id: String,
+    @SerializedName("combinacion")
+    var combinacion: String,
+    @SerializedName("sorteo_date")
+    var sorteo_date: Date
+
 )
 
 data class LoginResponse(
