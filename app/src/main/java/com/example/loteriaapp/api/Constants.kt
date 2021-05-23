@@ -9,5 +9,6 @@ object Constants {
     const val GETAPUESTAS_URL = "apuestas/{userId}"
     const val GETAPUESTASBYID_URL = "apuestas/{userId}/{apuestaId}"
     const val POSTAPUESTAS_URL = "apuestas/{userId}"
+    const val POSTUSER_URL = "auth/register"
 
 }

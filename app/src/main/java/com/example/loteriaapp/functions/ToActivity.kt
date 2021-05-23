@@ -2,14 +2,24 @@ package com.example.loteriaapp.functions
 
 import android.content.Context
 import android.content.Intent
-import com.example.loteriaapp.views.ApuestasActivity
-import com.example.loteriaapp.views.HomeActivity
-import com.example.loteriaapp.views.LoginActivity
+import com.example.loteriaapp.views.*
 
-class ToActivity {
+class ToActivity{
     fun toHomeActivity(context: Context) {
         val context = context
         val intent = Intent(context, HomeActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    fun toCreateApuestaActivity(context: Context) {
+        val context = context
+        val intent = Intent(context, CreateApuestaActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    fun toRegisterActivity(context: Context) {
+        val context = context
+        val intent = Intent(context, RegisterActivity::class.java)
         context.startActivity(intent)
     }
 

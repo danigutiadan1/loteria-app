@@ -11,9 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-/**
- * Created by pacopulido on 23/02/2021.
- */
 class ApuestasViewModel : ViewModel() {
 
 
@@ -27,12 +24,5 @@ class ApuestasViewModel : ViewModel() {
         return apuestas
     }
 
-    fun saveApuesta(user_id: String, apuesta: PostApuesta): MutableLiveData<PostApuesta> {
-        val apuestaresponse= MutableLiveData<PostApuesta>()
-        GlobalScope.launch(Dispatchers.Main) {
-            apuestaresponse.value = repository.saveApuesta(user_id, apuesta)
-        }
-        return apuestaresponse
-    }
 
 }

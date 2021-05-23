@@ -23,7 +23,10 @@ interface ApiService {
     @POST(Constants.LOGIN_URL)
     fun login(@Body request: LoginRequest): Call<List<LoginResponse>>
 
+    @POST(Constants.POSTUSER_URL)
+    fun register(@Body request: RegisterRequest): Call<Void>
+
 
     @POST(Constants.POSTAPUESTAS_URL)
-    fun saveApuesta(@Path ("userId")userId: String, @Body apuesta: PostApuesta): Deferred<Response<PostApuesta>>
+    fun saveApuesta(@Path ("userId")userId: String, @Body apuesta: PostApuesta): Call<Void>
 }

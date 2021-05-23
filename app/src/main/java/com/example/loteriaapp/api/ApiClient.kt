@@ -4,18 +4,23 @@ import android.content.Context
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+
 
 class ApiClient {
     private lateinit var apiService: ApiService
 
     fun getApiService(context: Context): ApiService {
 
-        // Initialize ApiService if not initialized yet
         if (!::apiService.isInitialized) {
+            var client = OkHttpClient().newBuilder()
+                    .connectTimeout(100, TimeUnit.MILLISECONDS)
+                    .readTimeout(100, TimeUnit.MILLISECONDS)
+                    .writeTimeout(100, TimeUnit.MILLISECONDS)
             val retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                //.client(okhttpClient(context)) // Add our Okhttp client
+                    .client(client.build())
                 .build()
 
             apiService = retrofit.create(ApiService::class.java)
@@ -23,27 +28,4 @@ class ApiClient {
 
         return apiService
     }
-
-    fun getApiServiceLogin(): ApiService {
-
-        // Initialize ApiService if not initialized yet
-        if (!::apiService.isInitialized) {
-            val retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            apiService = retrofit.create(ApiService::class.java)
-        }
-
-        return apiService
-    }
-
-    /*private fun okhttpClient(context: Context): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(AuthInterceptor(context))
-            .authenticator(Authenticator(context))
-            .build()
-   }
-   */
 }

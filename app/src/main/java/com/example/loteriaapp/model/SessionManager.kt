@@ -36,40 +36,6 @@ class SessionManager(context: Context) {
         return prefs.contains(USER_ID)
     }
 
-    fun saveUserApuestas(apuestas: List<GetApuestaResponse>){
-        val editor= prefs.edit()
-
-        val gson = Gson()
-        val json = gson.toJson(apuestas)
-        editor.putString("apuestas", json)
-        //for ((index, apuesta) in apuestas.withIndex()) {
-          //  editor.putString(APUESTA+index, apuesta.combinacion)
-        //}
-        editor.apply()
-    }
-
-    fun saveUserApuesta(apuesta: GetApuestaResponse){
-        val editor= prefs.edit()
-
-        val gson = Gson()
-        val json = gson.toJson(apuesta)
-        editor.putString("apuesta", json)
-        editor.apply()
-
-    }
-
-    fun getApuestaFromShared(): GetApuestaResponse{
-        val gson = Gson()
-        val json = prefs.getString("apuesta", "")
-        val apuesta= gson.fromJson(json, GetApuestaResponse::class.java)
-        return apuesta
-    }
-    fun getApuestasFromShared(): List<GetApuestaResponse> {
-        val gson = Gson()
-        val json = prefs.getString("apuestas", "")
-        val objectList = gson.fromJson(json, Array<GetApuestaResponse>::class.java).asList()
-        return objectList
-    }
 
     fun clearShared(){
         val editor= prefs.edit()

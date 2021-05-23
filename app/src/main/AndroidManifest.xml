@@ -11,14 +11,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/Theme.LoteriaApp"
         android:usesCleartextTraffic="true">
+        <activity android:name=".views.CreateApuestaActivity"></activity>
+        <activity android:name=".views.RegisterActivity" />
         <activity
             android:name=".views.ApuestasActivity"
             android:label="@string/title_activity_apuestas"
             android:theme="@style/Theme.LoteriaApp.NoActionBar" />
-        <activity android:name=".views.HomeActivity"
-            android:theme="@style/Theme.LoteriaApp.NoActionBar"/>
+        <activity
+            android:name=".views.HomeActivity"
+            android:theme="@style/Theme.LoteriaApp.NoActionBar" />
         <activity
             android:name=".views.LoginActivity"
             android:noHistory="true">

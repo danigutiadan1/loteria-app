@@ -1,6 +1,11 @@
 package com.example.loteriaapp.views
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.loteriaapp.R
 import com.example.loteriaapp.adapters.AdapterApuesta
-import com.example.loteriaapp.functions.GetApuestas
+import com.example.loteriaapp.functions.ToActivity
 import com.example.loteriaapp.model.GetApuestaResponse
 import com.example.loteriaapp.model.SessionManager
 import com.example.loteriaapp.viewmodels.ApuestasViewModel
@@ -24,8 +29,8 @@ class ApuestasActivity : AppCompatActivity() {
 
     private lateinit var apuestas: List<GetApuestaResponse>
     private lateinit var viewModel: ApuestasViewModel
-    private lateinit var getApuestas: GetApuestas
     private lateinit var sessionManager: SessionManager
+    private lateinit var toActivity: ToActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +38,17 @@ class ApuestasActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         sessionManager= SessionManager(this)
         rvApuestas= findViewById<RecyclerView>(R.id.rvApuestas)
+        toActivity= ToActivity()
         viewModel= ApuestasViewModel()
         GlobalScope.async {
-            getApuestas = GetApuestas()
         }
 
         initRV()
 
-        //getApuestas.getApuestas(this)
         loadApuestas()
 
         findViewById<FloatingActionButton>(R.id.fabAddApuesta).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            toActivity.toCreateApuestaActivity(this)
         }
     }
 
@@ -64,6 +67,13 @@ class ApuestasActivity : AppCompatActivity() {
         })
 
     }
+
+    override fun onBackPressed(){
+        finish()
+        toActivity.toHomeActivity(this)
+    }
+
+
 
 
 

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import com.example.loteriaapp.R
-import com.example.loteriaapp.functions.GetApuestas
 import com.example.loteriaapp.functions.Login
 import com.example.loteriaapp.functions.ToActivity
 import com.example.loteriaapp.model.SessionManager
@@ -14,6 +13,7 @@ private lateinit var login: Login
 private lateinit var etEmail: EditText
 private lateinit var etPassword: EditText
 private lateinit var btnLogin: Button
+private lateinit var btnRegister: Button
 private lateinit var sessionManager: SessionManager
 private lateinit var toActivity: ToActivity
 class LoginActivity : AppCompatActivity() {
@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         etEmail= findViewById(R.id.etEmail) as EditText
         etPassword= findViewById(R.id.etPassword) as EditText
         btnLogin= findViewById(R.id.btnLogin) as Button
+        btnRegister= findViewById(R.id.btnRegister) as Button
 
 
         login = Login()
@@ -35,6 +36,10 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.setOnClickListener {
                 login.login(this, etEmail.text.toString(), etPassword.text.toString())
             }
+        }
+
+        btnRegister.setOnClickListener{
+            toActivity.toRegisterActivity(this)
         }
     }
 }

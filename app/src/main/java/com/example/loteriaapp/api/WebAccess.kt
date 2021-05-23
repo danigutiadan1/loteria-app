@@ -4,9 +4,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-/**
- * Created by pacopulido on 23/02/2021.
- */
+
 
 object WebAccess {
 
